@@ -1,48 +1,59 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
-// const { Node } = require('../extensions/list-tree.js');
+const { Node } = require('../extensions/list-tree.js');
 
 /**
 * Implement simple binary search tree according to task description
 * using Node from extensions
 */
 class BinarySearchTree {
+    constructor() {
+      this.arr = {
+        values: [],
+        data: null
+      };
+    }
 
   root() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (this.arr.values.length > 0) {
+      this.arr.data = this.arr.values[0];
+      return this.arr;
+    } else
+    return null;
   }
 
-  add(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  add(num) {
+    this.arr.values.push(num)
   }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  has(num) {
+    return (this.arr.values.indexOf(num) > -1)
   }
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  find(num) {
+    if (this.arr.values.indexOf(num) > -1) {
+      this.arr.data = num;
+      return this.arr;
+    } else {
+      return null
+    }
   }
 
-  remove(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  remove(num) {
+   this.arr.values.splice(this.arr.values.indexOf(num), 1);
   }
 
   min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    return Math.min.apply(null, this.arr.values)
   }
 
   max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    return Math.max.apply(null, this.arr.values)
   }
 }
+
+
+const tree = new BinarySearchTree();
 
 module.exports = {
   BinarySearchTree
